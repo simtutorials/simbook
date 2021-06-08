@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>A Faux Exercises | Simulation Book</title>
+  <meta name="description" content="Tutorials on data simulation from the 2021 PsyPAG Simulation Summer School." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="A Faux Exercises | Simulation Book" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Tutorials on data simulation from the 2021 PsyPAG Simulation Summer School." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="A Faux Exercises | Simulation Book" />
+  
+  <meta name="twitter:description" content="Tutorials on data simulation from the 2021 PsyPAG Simulation Summer School." />
+  
+
+
+
+<meta name="date" content="2021-06-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro-to-faux.html"/>
+
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<meta property="og:title" content="Simulation Tutorials">
+<meta property="og:description" content="Tutorials on data simulation from the 2021 PsyPAG Simulation Summer School.">
+<meta property="og:image" content="https://psyteachr.github.io/images/twitter/psyteachr.png">
+<meta property="og:url" content="https://simtutorials.github.io/simbook/">
+<meta property="twitter:card" content="summary_large_image">
+
+<link rel="shortcut icon" href="https://psyteachr.github.io/images/logo.png">
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="include/psyteachr.css" type="text/css" />
+<link rel="stylesheet" href="include/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Simulation Book</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="1" data-path="intro-to-faux.html"><a href="intro-to-faux.html"><i class="fa fa-check"></i><b>1</b> Intro to Faux</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro-to-faux.html"><a href="intro-to-faux.html#multivariate-normal"><i class="fa fa-check"></i><b>1.1</b> Multivariate normal</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="intro-to-faux.html"><a href="intro-to-faux.html#shortcuts"><i class="fa fa-check"></i><b>1.1.1</b> Shortcuts</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="intro-to-faux.html"><a href="intro-to-faux.html#factorial-designs"><i class="fa fa-check"></i><b>1.2</b> Factorial Designs</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="intro-to-faux.html"><a href="intro-to-faux.html#factors"><i class="fa fa-check"></i><b>1.2.1</b> Factors</a></li>
+<li class="chapter" data-level="1.2.2" data-path="intro-to-faux.html"><a href="intro-to-faux.html#anonymous-factors"><i class="fa fa-check"></i><b>1.2.2</b> Anonymous Factors</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="intro-to-faux.html"><a href="intro-to-faux.html#replications"><i class="fa fa-check"></i><b>1.3</b> Replications</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="intro-to-faux.html"><a href="intro-to-faux.html#analyse-each-replicate"><i class="fa fa-check"></i><b>1.3.1</b> Analyse each replicate</a></li>
+<li class="chapter" data-level="1.3.2" data-path="intro-to-faux.html"><a href="intro-to-faux.html#anova"><i class="fa fa-check"></i><b>1.3.2</b> ANOVA</a></li>
+</ul></li>
+</ul></li>
+<li class="appendix"><span><b>Appendices</b></span></li>
+<li class="chapter" data-level="A" data-path="faux-exercises.html"><a href="faux-exercises.html"><i class="fa fa-check"></i><b>A</b> Faux Exercises</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="faux-exercises.html"><a href="faux-exercises.html#short-exercises"><i class="fa fa-check"></i><b>A.1</b> Short Exercises</a>
+<ul>
+<li class="chapter" data-level="A.1.1" data-path="faux-exercises.html"><a href="faux-exercises.html#multivariate-normal-1"><i class="fa fa-check"></i><b>A.1.1</b> Multivariate normal</a></li>
+<li class="chapter" data-level="A.1.2" data-path="faux-exercises.html"><a href="faux-exercises.html#from-existing-data"><i class="fa fa-check"></i><b>A.1.2</b> From existing data</a></li>
+<li class="chapter" data-level="A.1.3" data-path="faux-exercises.html"><a href="faux-exercises.html#b"><i class="fa fa-check"></i><b>A.1.3</b> 2b</a></li>
+<li class="chapter" data-level="A.1.4" data-path="faux-exercises.html"><a href="faux-exercises.html#w"><i class="fa fa-check"></i><b>A.1.4</b> 3w</a></li>
+<li class="chapter" data-level="A.1.5" data-path="faux-exercises.html"><a href="faux-exercises.html#w2w"><i class="fa fa-check"></i><b>A.1.5</b> 2w*2w</a></li>
+<li class="chapter" data-level="A.1.6" data-path="faux-exercises.html"><a href="faux-exercises.html#w3b"><i class="fa fa-check"></i><b>A.1.6</b> 2w*3b</a></li>
+<li class="chapter" data-level="A.1.7" data-path="faux-exercises.html"><a href="faux-exercises.html#replications-1"><i class="fa fa-check"></i><b>A.1.7</b> Replications</a></li>
+<li class="chapter" data-level="A.1.8" data-path="faux-exercises.html"><a href="faux-exercises.html#power"><i class="fa fa-check"></i><b>A.1.8</b> Power</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="faux-exercises.html"><a href="faux-exercises.html#calorie-placement-re-simulation"><i class="fa fa-check"></i><b>A.2</b> Calorie Placement Re-Simulation</a>
+<ul>
+<li class="chapter" data-level="A.2.1" data-path="faux-exercises.html"><a href="faux-exercises.html#data-source"><i class="fa fa-check"></i><b>A.2.1</b> Data Source</a></li>
+<li class="chapter" data-level="A.2.2" data-path="faux-exercises.html"><a href="faux-exercises.html#study-2"><i class="fa fa-check"></i><b>A.2.2</b> Study 2</a></li>
+<li class="chapter" data-level="A.2.3" data-path="faux-exercises.html"><a href="faux-exercises.html#study-1"><i class="fa fa-check"></i><b>A.2.3</b> Study 1</a></li>
+<li class="chapter" data-level="A.2.4" data-path="faux-exercises.html"><a href="faux-exercises.html#study-3"><i class="fa fa-check"></i><b>A.2.4</b> Study 3</a></li>
+<li class="chapter" data-level="A.2.5" data-path="faux-exercises.html"><a href="faux-exercises.html#study-s1"><i class="fa fa-check"></i><b>A.2.5</b> Study S1</a></li>
+<li class="chapter" data-level="A.2.6" data-path="faux-exercises.html"><a href="faux-exercises.html#study-s2"><i class="fa fa-check"></i><b>A.2.6</b> Study S2</a></li>
+<li class="chapter" data-level="A.2.7" data-path="faux-exercises.html"><a href="faux-exercises.html#study-s3"><i class="fa fa-check"></i><b>A.2.7</b> Study S3</a></li>
+<li class="chapter" data-level="A.2.8" data-path="faux-exercises.html"><a href="faux-exercises.html#conclusion"><i class="fa fa-check"></i><b>A.2.8</b> Conclusion</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" 
+    target="blank"><img alt="Creative Commons License" 
+    style="border-width:0" 
+    src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Simulation Book</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="faux-exercises" class="section level1" number="2">
+<h1><span class="header-section-number">A</span> Faux Exercises</h1>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="faux-exercises.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb29-2"><a href="faux-exercises.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(faux)</span>
+<span id="cb29-3"><a href="faux-exercises.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(afex)</span>
+<span id="cb29-4"><a href="faux-exercises.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emmeans)</span>
+<span id="cb29-5"><a href="faux-exercises.html#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">faux_options</span>(<span class="at">plot =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb29-6"><a href="faux-exercises.html#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-7"><a href="faux-exercises.html#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">8675309</span>)</span></code></pre></div>
+<div id="short-exercises" class="section level2" number="2.1">
+<h2><span class="header-section-number">A.1</span> Short Exercises</h2>
+<div id="multivariate-normal-1" class="section level3" number="2.1.1">
+<h3><span class="header-section-number">A.1.1</span> Multivariate normal</h3>
+<p>Sample 40 values of three variables named <code>J</code>, <code>K</code> and <code>L</code> from a population with means of 10, 20 and 30, and SDs of 5. <code>J</code> and <code>K</code> are correlated 0.5, <code>J</code> and <code>L</code> are correlated 0.25, and <code>K</code> and <code>L</code> are not correlated.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="faux-exercises.html#cb30-1" aria-hidden="true" tabindex="-1"></a>ex1 <span class="ot">&lt;-</span> <span class="fu">rnorm_multi</span>(<span class="at">n =</span> <span class="dv">40</span>, <span class="at">mu =</span> <span class="fu">c</span>(<span class="at">J =</span> <span class="dv">10</span>, <span class="at">K =</span> <span class="dv">20</span>, <span class="at">L =</span> <span class="dv">30</span>),</span>
+<span id="cb30-2"><a href="faux-exercises.html#cb30-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sd =</span> <span class="dv">5</span>, <span class="at">r =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.25</span>, <span class="dv">0</span>))</span>
+<span id="cb30-3"><a href="faux-exercises.html#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="faux-exercises.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">get_params</span>(ex1)</span></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="right">n</th>
+<th align="left">var</th>
+<th align="right">J</th>
+<th align="right">K</th>
+<th align="right">L</th>
+<th align="right">mean</th>
+<th align="right">sd</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">40</td>
+<td align="left">J</td>
+<td align="right">1.00</td>
+<td align="right">0.52</td>
+<td align="right">0.12</td>
+<td align="right">9.33</td>
+<td align="right">4.44</td>
+</tr>
+<tr class="even">
+<td align="right">40</td>
+<td align="left">K</td>
+<td align="right">0.52</td>
+<td align="right">1.00</td>
+<td align="right">-0.20</td>
+<td align="right">19.46</td>
+<td align="right">4.62</td>
+</tr>
+<tr class="odd">
+<td align="right">40</td>
+<td align="left">L</td>
+<td align="right">0.12</td>
+<td align="right">-0.20</td>
+<td align="right">1.00</td>
+<td align="right">28.61</td>
+<td align="right">4.57</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="from-existing-data" class="section level3" number="2.1.2">
+<h3><span class="header-section-number">A.1.2</span> From existing data</h3>
+<p>Using the data from the built-in dataset <code>attitude</code>, simulate a new set of 20 observations drawn from a population with the same means, SDs and correlations for each column as the original data.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="faux-exercises.html#cb31-1" aria-hidden="true" tabindex="-1"></a>dat_r <span class="ot">&lt;-</span> <span class="fu">cor</span>(attitude)</span>
+<span id="cb31-2"><a href="faux-exercises.html#cb31-2" aria-hidden="true" tabindex="-1"></a>dat_mu <span class="ot">&lt;-</span> <span class="fu">summarise_all</span>(attitude, mean) <span class="sc">%&gt;%</span> <span class="fu">t</span>()</span>
+<span id="cb31-3"><a href="faux-exercises.html#cb31-3" aria-hidden="true" tabindex="-1"></a>dat_sd <span class="ot">&lt;-</span> <span class="fu">summarise_all</span>(attitude, sd) <span class="sc">%&gt;%</span> <span class="fu">t</span>()</span>
+<span id="cb31-4"><a href="faux-exercises.html#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="faux-exercises.html#cb31-5" aria-hidden="true" tabindex="-1"></a>ex2 <span class="ot">&lt;-</span> <span class="fu">rnorm_multi</span>(<span class="dv">20</span>, <span class="at">mu =</span> dat_mu, <span class="at">sd =</span> dat_sd,<span class="at">r =</span> dat_r)</span>
+<span id="cb31-6"><a href="faux-exercises.html#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="faux-exercises.html#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="fu">get_params</span>(ex2)</span></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="right">n</th>
+<th align="left">var</th>
+<th align="right">rating</th>
+<th align="right">complaints</th>
+<th align="right">privileges</th>
+<th align="right">learning</th>
+<th align="right">raises</th>
+<th align="right">critical</th>
+<th align="right">advance</th>
+<th align="right">mean</th>
+<th align="right">sd</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">20</td>
+<td align="left">rating</td>
+<td align="right">1.00</td>
+<td align="right">0.68</td>
+<td align="right">0.39</td>
+<td align="right">0.38</td>
+<td align="right">0.37</td>
+<td align="right">0.26</td>
+<td align="right">0.06</td>
+<td align="right">62.73</td>
+<td align="right">8.19</td>
+</tr>
+<tr class="even">
+<td align="right">20</td>
+<td align="left">complaints</td>
+<td align="right">0.68</td>
+<td align="right">1.00</td>
+<td align="right">0.50</td>
+<td align="right">0.18</td>
+<td align="right">0.51</td>
+<td align="right">0.34</td>
+<td align="right">-0.05</td>
+<td align="right">64.82</td>
+<td align="right">9.84</td>
+</tr>
+<tr class="odd">
+<td align="right">20</td>
+<td align="left">privileges</td>
+<td align="right">0.39</td>
+<td align="right">0.50</td>
+<td align="right">1.00</td>
+<td align="right">0.29</td>
+<td align="right">0.34</td>
+<td align="right">-0.03</td>
+<td align="right">0.10</td>
+<td align="right">50.06</td>
+<td align="right">10.68</td>
+</tr>
+<tr class="even">
+<td align="right">20</td>
+<td align="left">learning</td>
+<td align="right">0.38</td>
+<td align="right">0.18</td>
+<td align="right">0.29</td>
+<td align="right">1.00</td>
+<td align="right">0.59</td>
+<td align="right">0.01</td>
+<td align="right">0.64</td>
+<td align="right">55.90</td>
+<td align="right">11.33</td>
+</tr>
+<tr class="odd">
+<td align="right">20</td>
+<td align="left">raises</td>
+<td align="right">0.37</td>
+<td align="right">0.51</td>
+<td align="right">0.34</td>
+<td align="right">0.59</td>
+<td align="right">1.00</td>
+<td align="right">0.30</td>
+<td align="right">0.60</td>
+<td align="right">63.06</td>
+<td align="right">10.82</td>
+</tr>
+<tr class="even">
+<td align="right">20</td>
+<td align="left">critical</td>
+<td align="right">0.26</td>
+<td align="right">0.34</td>
+<td align="right">-0.03</td>
+<td align="right">0.01</td>
+<td align="right">0.30</td>
+<td align="right">1.00</td>
+<td align="right">-0.19</td>
+<td align="right">76.67</td>
+<td align="right">10.22</td>
+</tr>
+<tr class="odd">
+<td align="right">20</td>
+<td align="left">advance</td>
+<td align="right">0.06</td>
+<td align="right">-0.05</td>
+<td align="right">0.10</td>
+<td align="right">0.64</td>
+<td align="right">0.60</td>
+<td align="right">-0.19</td>
+<td align="right">1.00</td>
+<td align="right">43.89</td>
+<td align="right">12.71</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="b" class="section level3" number="2.1.3">
+<h3><span class="header-section-number">A.1.3</span> 2b</h3>
+<p>Create a dataset with a between-subject factor of “pet” having two levels, “cat,” and “dog.” The DV is “happiness” score. There are 20 cat-owners with a mean happiness score of 10 (SD = 3) and there are 30 dog-owners with a mean happiness score of 11 (SD = 3).</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="faux-exercises.html#cb32-1" aria-hidden="true" tabindex="-1"></a>dat2b <span class="ot">&lt;-</span> <span class="fu">sim_design</span>(</span>
+<span id="cb32-2"><a href="faux-exercises.html#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">between =</span> <span class="fu">list</span>(<span class="at">pet =</span> <span class="fu">c</span>(<span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>)),</span>
+<span id="cb32-3"><a href="faux-exercises.html#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">&quot;happiness&quot;</span>,</span>
+<span id="cb32-4"><a href="faux-exercises.html#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="fu">list</span>(<span class="at">cat =</span> <span class="dv">20</span>, <span class="at">dog =</span> <span class="dv">30</span>),</span>
+<span id="cb32-5"><a href="faux-exercises.html#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">mu =</span> <span class="fu">list</span>(<span class="at">cat =</span> <span class="dv">10</span>, <span class="at">dog =</span> <span class="dv">11</span>),</span>
+<span id="cb32-6"><a href="faux-exercises.html#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">sd =</span> <span class="dv">3</span></span>
+<span id="cb32-7"><a href="faux-exercises.html#cb32-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb32-8"><a href="faux-exercises.html#cb32-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-9"><a href="faux-exercises.html#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="fu">get_params</span>(dat2b, <span class="at">between =</span> <span class="st">&quot;pet&quot;</span>)</span></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">pet</th>
+<th align="right">n</th>
+<th align="right">mean</th>
+<th align="right">sd</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">cat</td>
+<td align="right">20</td>
+<td align="right">10.21</td>
+<td align="right">2.95</td>
+</tr>
+<tr class="even">
+<td align="left">dog</td>
+<td align="right">30</td>
+<td align="right">11.17</td>
+<td align="right">2.69</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="w" class="section level3" number="2.1.4">
+<h3><span class="header-section-number">A.1.4</span> 3w</h3>
+<p>Create a dataset of 20 observations with 1 within-subject variable (“condition”) having 3 levels (“A,” “B,” “C”) with means of 10, 20 and 30 and SD of 5. The correlations between each level have r = 0.4. The dataset should look like this:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">id</th>
+<th align="left">condition</th>
+<th align="right">score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">S01</td>
+<td align="left">A</td>
+<td align="right">9.17</td>
+</tr>
+<tr class="even">
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="right">…</td>
+</tr>
+<tr class="odd">
+<td align="left">S20</td>
+<td align="left">A</td>
+<td align="right">11.57</td>
+</tr>
+<tr class="even">
+<td align="left">S01</td>
+<td align="left">B</td>
+<td align="right">18.44</td>
+</tr>
+<tr class="odd">
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="right">…</td>
+</tr>
+<tr class="even">
+<td align="left">S20</td>
+<td align="left">B</td>
+<td align="right">20.04</td>
+</tr>
+<tr class="odd">
+<td align="left">S01</td>
+<td align="left">C</td>
+<td align="right">35.11</td>
+</tr>
+<tr class="even">
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="right">…</td>
+</tr>
+<tr class="odd">
+<td align="left">S20</td>
+<td align="left">C</td>
+<td align="right">29.16</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="faux-exercises.html#cb33-1" aria-hidden="true" tabindex="-1"></a>dat3w <span class="ot">&lt;-</span> <span class="fu">sim_design</span>(</span>
+<span id="cb33-2"><a href="faux-exercises.html#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">within =</span> <span class="fu">list</span>(<span class="at">condition =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>)),</span>
+<span id="cb33-3"><a href="faux-exercises.html#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="dv">20</span>,</span>
+<span id="cb33-4"><a href="faux-exercises.html#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">mu =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>),</span>
+<span id="cb33-5"><a href="faux-exercises.html#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sd =</span> <span class="dv">5</span>,</span>
+<span id="cb33-6"><a href="faux-exercises.html#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">r =</span> .<span class="dv">4</span>,</span>
+<span id="cb33-7"><a href="faux-exercises.html#cb33-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">&quot;score&quot;</span>,</span>
+<span id="cb33-8"><a href="faux-exercises.html#cb33-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">long =</span> <span class="cn">TRUE</span></span>
+<span id="cb33-9"><a href="faux-exercises.html#cb33-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb33-10"><a href="faux-exercises.html#cb33-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-11"><a href="faux-exercises.html#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="fu">get_params</span>(dat3w)</span></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="right">n</th>
+<th align="left">var</th>
+<th align="right">A</th>
+<th align="right">B</th>
+<th align="right">C</th>
+<th align="right">mean</th>
+<th align="right">sd</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">20</td>
+<td align="left">A</td>
+<td align="right">1.00</td>
+<td align="right">0.47</td>
+<td align="right">0.43</td>
+<td align="right">8.59</td>
+<td align="right">4.70</td>
+</tr>
+<tr class="even">
+<td align="right">20</td>
+<td align="left">B</td>
+<td align="right">0.47</td>
+<td align="right">1.00</td>
+<td align="right">0.21</td>
+<td align="right">20.65</td>
+<td align="right">5.97</td>
+</tr>
+<tr class="odd">
+<td align="right">20</td>
+<td align="left">C</td>
+<td align="right">0.43</td>
+<td align="right">0.21</td>
+<td align="right">1.00</td>
+<td align="right">31.00</td>
+<td align="right">3.29</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="w2w" class="section level3" number="2.1.5">
+<h3><span class="header-section-number">A.1.5</span> 2w*2w</h3>
+<p>Create a dataset with 50 observations of 2 within-subject variables (“A” and “B”) each having 2 levels. The mean for all cells is 10 and the SD is 2. The dataset should have 20 subjects. The correlations look like this:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">A1_B1</th>
+<th align="right">A1_B2</th>
+<th align="right">A2_B1</th>
+<th align="right">A2_B2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A1_B1</td>
+<td align="right">1.0</td>
+<td align="right">0.5</td>
+<td align="right">0.5</td>
+<td align="right">0.2</td>
+</tr>
+<tr class="even">
+<td align="left">A1_B2</td>
+<td align="right">0.5</td>
+<td align="right">1.0</td>
+<td align="right">0.2</td>
+<td align="right">0.5</td>
+</tr>
+<tr class="odd">
+<td align="left">A2_B1</td>
+<td align="right">0.5</td>
+<td align="right">0.2</td>
+<td align="right">1.0</td>
+<td align="right">0.5</td>
+</tr>
+<tr class="even">
+<td align="left">A2_B2</td>
+<td align="right">0.2</td>
+<td align="right">0.5</td>
+<td align="right">0.5</td>
+<td align="right">1.0</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="faux-exercises.html#cb34-1" aria-hidden="true" tabindex="-1"></a>dat2w2w <span class="ot">&lt;-</span> <span class="fu">sim_design</span>(</span>
+<span id="cb34-2"><a href="faux-exercises.html#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">within =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>),</span>
+<span id="cb34-3"><a href="faux-exercises.html#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="dv">50</span>, </span>
+<span id="cb34-4"><a href="faux-exercises.html#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">mu =</span> <span class="dv">10</span>,</span>
+<span id="cb34-5"><a href="faux-exercises.html#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sd =</span> <span class="dv">2</span>,</span>
+<span id="cb34-6"><a href="faux-exercises.html#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">r =</span> <span class="fu">c</span>(.<span class="dv">5</span>, .<span class="dv">5</span>, .<span class="dv">2</span>, </span>
+<span id="cb34-7"><a href="faux-exercises.html#cb34-7" aria-hidden="true" tabindex="-1"></a>            .<span class="dv">2</span>, .<span class="dv">5</span>, </span>
+<span id="cb34-8"><a href="faux-exercises.html#cb34-8" aria-hidden="true" tabindex="-1"></a>                .<span class="dv">5</span>)</span>
+<span id="cb34-9"><a href="faux-exercises.html#cb34-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-10"><a href="faux-exercises.html#cb34-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-11"><a href="faux-exercises.html#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="fu">get_params</span>(dat2w2w)</span></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="right">n</th>
+<th align="left">var</th>
+<th align="right">A1_B1</th>
+<th align="right">A1_B2</th>
+<th align="right">A2_B1</th>
+<th align="right">A2_B2</th>
+<th align="right">mean</th>
+<th align="right">sd</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">50</td>
+<td align="left">A1_B1</td>
+<td align="right">1.00</td>
+<td align="right">0.41</td>
+<td align="right">0.45</td>
+<td align="right">0.13</td>
+<td align="right">10.67</td>
+<td align="right">2.03</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="left">A1_B2</td>
+<td align="right">0.41</td>
+<td align="right">1.00</td>
+<td align="right">-0.08</td>
+<td align="right">0.37</td>
+<td align="right">10.00</td>
+<td align="right">2.15</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="left">A2_B1</td>
+<td align="right">0.45</td>
+<td align="right">-0.08</td>
+<td align="right">1.00</td>
+<td align="right">0.40</td>
+<td align="right">10.44</td>
+<td align="right">2.16</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="left">A2_B2</td>
+<td align="right">0.13</td>
+<td align="right">0.37</td>
+<td align="right">0.40</td>
+<td align="right">1.00</td>
+<td align="right">9.95</td>
+<td align="right">2.11</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="w3b" class="section level3" number="2.1.6">
+<h3><span class="header-section-number">A.1.6</span> 2w*3b</h3>
+<p>Create a dataset with a between-subject factor of “pet” having 3 levels (“cat,” “dog,” and “ferret”) and a within-subject factor of “time” having 2 levels (“pre” and “post”). The N in each group should be 10. Means are:</p>
+<ul>
+<li>cats: pre = 10, post = 12</li>
+<li>dogs: pre = 14, post = 16</li>
+<li>ferrets: pre = 18, post = 20</li>
+</ul>
+<p>SDs are all 5 and within-cell correlations are all 0.25.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="faux-exercises.html#cb35-1" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb35-2"><a href="faux-exercises.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">cat =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">12</span>),</span>
+<span id="cb35-3"><a href="faux-exercises.html#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">dog =</span> <span class="fu">c</span>(<span class="dv">14</span>, <span class="dv">16</span>),</span>
+<span id="cb35-4"><a href="faux-exercises.html#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ferret =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">20</span>)</span>
+<span id="cb35-5"><a href="faux-exercises.html#cb35-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb35-6"><a href="faux-exercises.html#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="faux-exercises.html#cb35-7" aria-hidden="true" tabindex="-1"></a>dat2w3b <span class="ot">&lt;-</span> <span class="fu">sim_design</span>(</span>
+<span id="cb35-8"><a href="faux-exercises.html#cb35-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">within =</span> <span class="fu">list</span>(<span class="at">time =</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;post&quot;</span>)),</span>
+<span id="cb35-9"><a href="faux-exercises.html#cb35-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">between =</span> <span class="fu">list</span>(<span class="at">pet =</span> <span class="fu">c</span>(<span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;ferret&quot;</span>)),</span>
+<span id="cb35-10"><a href="faux-exercises.html#cb35-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="dv">10</span>,</span>
+<span id="cb35-11"><a href="faux-exercises.html#cb35-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">mu =</span> mu,</span>
+<span id="cb35-12"><a href="faux-exercises.html#cb35-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">sd =</span> <span class="dv">5</span>,</span>
+<span id="cb35-13"><a href="faux-exercises.html#cb35-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">r =</span> <span class="fl">0.25</span></span>
+<span id="cb35-14"><a href="faux-exercises.html#cb35-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb35-15"><a href="faux-exercises.html#cb35-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-16"><a href="faux-exercises.html#cb35-16" aria-hidden="true" tabindex="-1"></a><span class="fu">get_params</span>(dat2w3b)</span></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">pet</th>
+<th align="right">n</th>
+<th align="left">var</th>
+<th align="right">pre</th>
+<th align="right">post</th>
+<th align="right">mean</th>
+<th align="right">sd</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">cat</td>
+<td align="right">10</td>
+<td align="left">pre</td>
+<td align="right">1.00</td>
+<td align="right">0.49</td>
+<td align="right">8.68</td>
+<td align="right">4.19</td>
+</tr>
+<tr class="even">
+<td align="left">cat</td>
+<td align="right">10</td>
+<td align="left">post</td>
+<td align="right">0.49</td>
+<td align="right">1.00</td>
+<td align="right">10.47</td>
+<td align="right">6.35</td>
+</tr>
+<tr class="odd">
+<td align="left">dog</td>
+<td align="right">10</td>
+<td align="left">pre</td>
+<td align="right">1.00</td>
+<td align="right">0.04</td>
+<td align="right">13.60</td>
+<td align="right">5.16</td>
+</tr>
+<tr class="even">
+<td align="left">dog</td>
+<td align="right">10</td>
+<td align="left">post</td>
+<td align="right">0.04</td>
+<td align="right">1.00</td>
+<td align="right">15.52</td>
+<td align="right">4.52</td>
+</tr>
+<tr class="odd">
+<td align="left">ferret</td>
+<td align="right">10</td>
+<td align="left">pre</td>
+<td align="right">1.00</td>
+<td align="right">0.08</td>
+<td align="right">15.17</td>
+<td align="right">4.73</td>
+</tr>
+<tr class="even">
+<td align="left">ferret</td>
+<td align="right">10</td>
+<td align="left">post</td>
+<td align="right">0.08</td>
+<td align="right">1.00</td>
+<td align="right">17.66</td>
+<td align="right">5.88</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="replications-1" class="section level3" number="2.1.7">
+<h3><span class="header-section-number">A.1.7</span> Replications</h3>
+<p>Create 5 datasets with a 2b*2b design, 30 participants in each cell. Each cell’s mean should be 0, except A1_B1, which should be 0.5. The SD should be 1. Make the resulting data in long format.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="faux-exercises.html#cb36-1" aria-hidden="true" tabindex="-1"></a>dat2b2b <span class="ot">&lt;-</span> <span class="fu">sim_design</span>(</span>
+<span id="cb36-2"><a href="faux-exercises.html#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">between =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>),</span>
+<span id="cb36-3"><a href="faux-exercises.html#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="dv">30</span>,</span>
+<span id="cb36-4"><a href="faux-exercises.html#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">mu =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb36-5"><a href="faux-exercises.html#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">rep =</span> <span class="dv">5</span>,</span>
+<span id="cb36-6"><a href="faux-exercises.html#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">long =</span> <span class="cn">TRUE</span></span>
+<span id="cb36-7"><a href="faux-exercises.html#cb36-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="power" class="section level3" number="2.1.8">
+<h3><span class="header-section-number">A.1.8</span> Power</h3>
+<p>Simulate 100 datasets like the one above and use <code>lm()</code> or <code>afex::aov_ez()</code> to look at the interaction between A and B. What is the power of this design?</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="faux-exercises.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># simulate 100 datasets</span></span>
+<span id="cb37-2"><a href="faux-exercises.html#cb37-2" aria-hidden="true" tabindex="-1"></a>dat2b2b_100 <span class="ot">&lt;-</span> <span class="fu">sim_design</span>(</span>
+<span id="cb37-3"><a href="faux-exercises.html#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">between =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>),</span>
+<span id="cb37-4"><a href="faux-exercises.html#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="dv">30</span>,</span>
+<span id="cb37-5"><a href="faux-exercises.html#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">mu =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb37-6"><a href="faux-exercises.html#cb37-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">rep =</span> <span class="dv">100</span>,</span>
+<span id="cb37-7"><a href="faux-exercises.html#cb37-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">long =</span> <span class="cn">TRUE</span></span>
+<span id="cb37-8"><a href="faux-exercises.html#cb37-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb37-9"><a href="faux-exercises.html#cb37-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-10"><a href="faux-exercises.html#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="co"># linear model version</span></span>
+<span id="cb37-11"><a href="faux-exercises.html#cb37-11" aria-hidden="true" tabindex="-1"></a>analyse_lm <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
+<span id="cb37-12"><a href="faux-exercises.html#cb37-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(y <span class="sc">~</span> A<span class="sc">*</span>B, <span class="at">data =</span> data) <span class="sc">%&gt;%</span> </span>
+<span id="cb37-13"><a href="faux-exercises.html#cb37-13" aria-hidden="true" tabindex="-1"></a>    broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb37-14"><a href="faux-exercises.html#cb37-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">term =</span> <span class="fu">factor</span>(term, <span class="at">levels =</span> term))</span>
+<span id="cb37-15"><a href="faux-exercises.html#cb37-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb37-16"><a href="faux-exercises.html#cb37-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-17"><a href="faux-exercises.html#cb37-17" aria-hidden="true" tabindex="-1"></a>ana_lm <span class="ot">&lt;-</span> dat2b2b_100 <span class="sc">%&gt;%</span></span>
+<span id="cb37-18"><a href="faux-exercises.html#cb37-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">analysis =</span> <span class="fu">map</span>(data, analyse_lm)) <span class="sc">%&gt;%</span></span>
+<span id="cb37-19"><a href="faux-exercises.html#cb37-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>data) <span class="sc">%&gt;%</span></span>
+<span id="cb37-20"><a href="faux-exercises.html#cb37-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(analysis)</span>
+<span id="cb37-21"><a href="faux-exercises.html#cb37-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-22"><a href="faux-exercises.html#cb37-22" aria-hidden="true" tabindex="-1"></a>ana_lm <span class="sc">%&gt;%</span></span>
+<span id="cb37-23"><a href="faux-exercises.html#cb37-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(term) <span class="sc">%&gt;%</span></span>
+<span id="cb37-24"><a href="faux-exercises.html#cb37-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">power =</span> <span class="fu">mean</span>(p.value <span class="sc">&lt;</span> .<span class="dv">05</span>),</span>
+<span id="cb37-25"><a href="faux-exercises.html#cb37-25" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>)</span></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">term</th>
+<th align="right">power</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(Intercept)</td>
+<td align="right">0.77</td>
+</tr>
+<tr class="even">
+<td align="left">AA2</td>
+<td align="right">0.52</td>
+</tr>
+<tr class="odd">
+<td align="left">BB2</td>
+<td align="right">0.49</td>
+</tr>
+<tr class="even">
+<td align="left">AA2:BB2</td>
+<td align="right">0.33</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="faux-exercises.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># anova version</span></span>
+<span id="cb38-2"><a href="faux-exercises.html#cb38-2" aria-hidden="true" tabindex="-1"></a>afex<span class="sc">::</span><span class="fu">set_sum_contrasts</span>() <span class="co"># avoids annoying afex message</span></span></code></pre></div>
+<pre><code>## setting contr.sum globally: options(contrasts=c(&#39;contr.sum&#39;, &#39;contr.poly&#39;))</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="faux-exercises.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">afex_options</span>(<span class="at">include_aov =</span> <span class="cn">FALSE</span>) <span class="co"># runs faster</span></span>
+<span id="cb40-2"><a href="faux-exercises.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">afex_options</span>(<span class="at">es_aov =</span> <span class="st">&quot;pes&quot;</span>) <span class="co"># changes effect size measure to partial eta squared</span></span>
+<span id="cb40-3"><a href="faux-exercises.html#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="faux-exercises.html#cb40-4" aria-hidden="true" tabindex="-1"></a>analyse_aov <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
+<span id="cb40-5"><a href="faux-exercises.html#cb40-5" aria-hidden="true" tabindex="-1"></a>  a <span class="ot">&lt;-</span> afex<span class="sc">::</span><span class="fu">aov_ez</span>(<span class="at">id =</span> <span class="st">&quot;id&quot;</span>,</span>
+<span id="cb40-6"><a href="faux-exercises.html#cb40-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">dv =</span> <span class="st">&quot;y&quot;</span>,</span>
+<span id="cb40-7"><a href="faux-exercises.html#cb40-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">between =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>),</span>
+<span id="cb40-8"><a href="faux-exercises.html#cb40-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">data =</span> data)</span>
+<span id="cb40-9"><a href="faux-exercises.html#cb40-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-10"><a href="faux-exercises.html#cb40-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>(a<span class="sc">$</span>anova_table, <span class="at">rownames =</span> <span class="st">&quot;term&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb40-11"><a href="faux-exercises.html#cb40-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">term =</span> <span class="fu">factor</span>(term, <span class="at">levels =</span> term)) <span class="sc">%&gt;%</span> </span>
+<span id="cb40-12"><a href="faux-exercises.html#cb40-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">p.value =</span> <span class="st">`</span><span class="at">Pr(&gt;F)</span><span class="st">`</span>) </span>
+<span id="cb40-13"><a href="faux-exercises.html#cb40-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb40-14"><a href="faux-exercises.html#cb40-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-15"><a href="faux-exercises.html#cb40-15" aria-hidden="true" tabindex="-1"></a>ana_aov <span class="ot">&lt;-</span> dat2b2b_100 <span class="sc">%&gt;%</span></span>
+<span id="cb40-16"><a href="faux-exercises.html#cb40-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">analysis =</span> <span class="fu">map</span>(data, analyse_aov)) <span class="sc">%&gt;%</span></span>
+<span id="cb40-17"><a href="faux-exercises.html#cb40-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>data) <span class="sc">%&gt;%</span></span>
+<span id="cb40-18"><a href="faux-exercises.html#cb40-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(analysis)</span>
+<span id="cb40-19"><a href="faux-exercises.html#cb40-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-20"><a href="faux-exercises.html#cb40-20" aria-hidden="true" tabindex="-1"></a>ana_aov <span class="sc">%&gt;%</span></span>
+<span id="cb40-21"><a href="faux-exercises.html#cb40-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(term) <span class="sc">%&gt;%</span></span>
+<span id="cb40-22"><a href="faux-exercises.html#cb40-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">power =</span> <span class="fu">mean</span>(p.value <span class="sc">&lt;</span> .<span class="dv">05</span>),</span>
+<span id="cb40-23"><a href="faux-exercises.html#cb40-23" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>)</span></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">term</th>
+<th align="right">power</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">0.23</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">0.21</td>
+</tr>
+<tr class="odd">
+<td align="left">A:B</td>
+<td align="right">0.33</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="calorie-placement-re-simulation" class="section level2" number="2.2">
+<h2><span class="header-section-number">A.2</span> Calorie Placement Re-Simulation</h2>
+<div id="data-source" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">A.2.1</span> Data Source</h3>
+<p>We will be replicating some of the re-analyses in Francis &amp; Thunell’s (2020) Meta-Psychology paper: Excess success in “Don’t count calorie labeling out: Calorie counts on the left side of menu items lead to lower calorie food choices.”</p>
+<p>They ran power analyses for all 6 studies in Dallas, Liu, and Ubel’s (2019) study showing that people order food with significantly fewer calories when the calorie count was placed to the left of the item than to the right (or having no calorie label). They then used these power estimates to calculate the probability of all 6 out of 6 studies being significant, given the observed power of each study.</p>
+<ul>
+<li><a href="https://doi.org/10.15626/MP.2019.2266">Re-analysis</a></li>
+<li><a href="https://osf.io/xrdhj/">Re-analysis code</a></li>
+<li><a href="https://doi.org/10.1002/jcpy.1053">Original paper</a></li>
+</ul>
+<p>Table 1 of the re-analysis paper provides all of the parameters we will need.</p>
+</div>
+<div id="study-2" class="section level3" number="2.2.2">
+<h3><span class="header-section-number">A.2.2</span> Study 2</h3>
+<p>We’ll start with S2 because the analysis is very straightforward. It’s a between-subjects design, where 143 subjects saw calorie placement on the left and their mean calories ordered were 1249.83 (SD = 449.07), while 132 subjects saw calorie placement on the right and their mean calories ordered were 1362.31 (SD = 447.35).</p>
+<p>Let’s first simulate a single data table with these parameters and set up our analysis.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="faux-exercises.html#cb41-1" aria-hidden="true" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="fu">sim_design</span>(</span>
+<span id="cb41-2"><a href="faux-exercises.html#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">between =</span> <span class="fu">list</span>(<span class="at">placement =</span> <span class="fu">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;right&quot;</span>)),</span>
+<span id="cb41-3"><a href="faux-exercises.html#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mu =</span> <span class="fu">c</span>(<span class="at">left =</span> <span class="fl">1249.83</span>, <span class="at">right =</span> <span class="fl">1362.31</span>),</span>
+<span id="cb41-4"><a href="faux-exercises.html#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sd =</span> <span class="fu">c</span>(<span class="at">left =</span> <span class="fl">449.07</span>, <span class="at">right =</span> <span class="fl">447.35</span>),</span>
+<span id="cb41-5"><a href="faux-exercises.html#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="fu">c</span>(<span class="at">left =</span> <span class="dv">143</span>, <span class="at">right =</span> <span class="dv">132</span>),</span>
+<span id="cb41-6"><a href="faux-exercises.html#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">&quot;calories&quot;</span></span>
+<span id="cb41-7"><a href="faux-exercises.html#cb41-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>Wrap the analysis in a function using the <code>tidy()</code> function from {broom} to get the results in a tidy table. Check that it works by running it on the single data set above.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="faux-exercises.html#cb42-1" aria-hidden="true" tabindex="-1"></a>s2_analyse <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
+<span id="cb42-2"><a href="faux-exercises.html#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t.test</span>(calories <span class="sc">~</span> placement, <span class="at">data =</span> data) <span class="sc">%&gt;%</span></span>
+<span id="cb42-3"><a href="faux-exercises.html#cb42-3" aria-hidden="true" tabindex="-1"></a>    broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
+<span id="cb42-4"><a href="faux-exercises.html#cb42-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb42-5"><a href="faux-exercises.html#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="faux-exercises.html#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="fu">s2_analyse</span>(s2)</span></code></pre></div>
+<div class="kable-table">
+<table>
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="20%" />
+<col width="10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">estimate</th>
+<th align="right">estimate1</th>
+<th align="right">estimate2</th>
+<th align="right">statistic</th>
+<th align="right">p.value</th>
+<th align="right">parameter</th>
+<th align="right">conf.low</th>
+<th align="right">conf.high</th>
+<th align="left">method</th>
+<th align="left">alternative</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">-134.2927</td>
+<td align="right">1182.723</td>
+<td align="right">1317.016</td>
+<td align="right">-2.376637</td>
+<td align="right">0.0181663</td>
+<td align="right">270.9239</td>
+<td align="right">-245.5381</td>
+<td align="right">-23.04728</td>
+<td align="left">Welch Two Sample t-test</td>
+<td align="left">two.sided</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Now, simulate the data 1000 times.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="faux-exercises.html#cb43-1" aria-hidden="true" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="fu">sim_design</span>(</span>
+<span id="cb43-2"><a href="faux-exercises.html#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">between =</span> <span class="fu">list</span>(<span class="at">placement =</span> <span class="fu">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;right&quot;</span>)),</span>
+<span id="cb43-3"><a href="faux-exercises.html#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mu =</span> <span class="fu">c</span>(<span class="at">left =</span> <span class="fl">1249.83</span>, <span class="at">right =</span> <span class="fl">1362.31</span>),</span>
+<span id="cb43-4"><a href="faux-exercises.html#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sd =</span> <span class="fu">c</span>(<span class="at">left =</span> <span class="fl">449.07</span>, <span class="at">right =</span> <span class="fl">447.35</span>),</span>
+<span id="cb43-5"><a href="faux-exercises.html#cb43-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="fu">c</span>(<span class="at">left =</span> <span class="dv">143</span>, <span class="at">right =</span> <span class="dv">132</span>),</span>
+<span id="cb43-6"><a href="faux-exercises.html#cb43-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">&quot;calories&quot;</span>,</span>
+<span id="cb43-7"><a href="faux-exercises.html#cb43-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">rep =</span> <span class="dv">1000</span></span>
+<span id="cb43-8"><a href="faux-exercises.html#cb43-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>Run the analysis on each data set.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="faux-exercises.html#cb44-1" aria-hidden="true" tabindex="-1"></a>s2_sim <span class="ot">&lt;-</span> s2 <span class="sc">%&gt;%</span></span>
+<span id="cb44-2"><a href="faux-exercises.html#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">analysis =</span> <span class="fu">map</span>(data, s2_analyse)) <span class="sc">%&gt;%</span></span>
+<span id="cb44-3"><a href="faux-exercises.html#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>data) <span class="sc">%&gt;%</span></span>
+<span id="cb44-4"><a href="faux-exercises.html#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(analysis)</span>
+<span id="cb44-5"><a href="faux-exercises.html#cb44-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-6"><a href="faux-exercises.html#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(s2_sim)</span></code></pre></div>
+<div class="kable-table">
+<table style="width:100%;">
+<colgroup>
+<col width="3%" />
+<col width="9%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="9%" />
+<col width="19%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">rep</th>
+<th align="right">estimate</th>
+<th align="right">estimate1</th>
+<th align="right">estimate2</th>
+<th align="right">statistic</th>
+<th align="right">p.value</th>
+<th align="right">parameter</th>
+<th align="right">conf.low</th>
+<th align="right">conf.high</th>
+<th align="left">method</th>
+<th align="left">alternative</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">-83.51288</td>
+<td align="right">1268.786</td>
+<td align="right">1352.299</td>
+<td align="right">-1.774903</td>
+<td align="right">0.0770381</td>
+<td align="right">270.5825</td>
+<td align="right">-176.1476</td>
+<td align="right">9.121849</td>
+<td align="left">Welch Two Sample t-test</td>
+<td align="left">two.sided</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">-114.97521</td>
+<td align="right">1263.464</td>
+<td align="right">1378.439</td>
+<td align="right">-2.181833</td>
+<td align="right">0.0299779</td>
+<td align="right">271.9809</td>
+<td align="right">-218.7203</td>
+<td align="right">-11.230099</td>
+<td align="left">Welch Two Sample t-test</td>
+<td align="left">two.sided</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">-85.44596</td>
+<td align="right">1255.420</td>
+<td align="right">1340.866</td>
+<td align="right">-1.573587</td>
+<td align="right">0.1167434</td>
+<td align="right">272.4557</td>
+<td align="right">-192.3471</td>
+<td align="right">21.455179</td>
+<td align="left">Welch Two Sample t-test</td>
+<td align="left">two.sided</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">-116.93164</td>
+<td align="right">1218.279</td>
+<td align="right">1335.211</td>
+<td align="right">-2.074587</td>
+<td align="right">0.0389873</td>
+<td align="right">265.7669</td>
+<td align="right">-227.9081</td>
+<td align="right">-5.955226</td>
+<td align="left">Welch Two Sample t-test</td>
+<td align="left">two.sided</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">-139.76904</td>
+<td align="right">1247.966</td>
+<td align="right">1387.735</td>
+<td align="right">-2.575934</td>
+<td align="right">0.0105253</td>
+<td align="right">271.9315</td>
+<td align="right">-246.5912</td>
+<td align="right">-32.946843</td>
+<td align="left">Welch Two Sample t-test</td>
+<td align="left">two.sided</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">-72.69624</td>
+<td align="right">1295.543</td>
+<td align="right">1368.239</td>
+<td align="right">-1.311121</td>
+<td align="right">0.1910297</td>
+<td align="right">247.9852</td>
+<td align="right">-181.9011</td>
+<td align="right">36.508633</td>
+<td align="left">Welch Two Sample t-test</td>
+<td align="left">two.sided</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Summarise the <code>p.value</code> column to get power.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="faux-exercises.html#cb45-1" aria-hidden="true" tabindex="-1"></a>s2_power <span class="ot">&lt;-</span> s2_sim <span class="sc">%&gt;%</span></span>
+<span id="cb45-2"><a href="faux-exercises.html#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sig =</span> p.value <span class="sc">&lt;</span> .<span class="dv">05</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb45-3"><a href="faux-exercises.html#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">power =</span> <span class="fu">mean</span>(sig)) <span class="sc">%&gt;%</span></span>
+<span id="cb45-4"><a href="faux-exercises.html#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(power)</span></code></pre></div>
+<p>Compare this value (0.539) with the value in the paper (0.5426).</p>
+</div>
+<div id="study-1" class="section level3" number="2.2.3">
+<h3><span class="header-section-number">A.2.3</span> Study 1</h3>
+<p>Study 1 is a little more complicated because the design includes a “no label” condition, so the decision rule for supporting the hypothesis is more complicated.</p>
+<p>The data simulation is relatively straightforward, though.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="faux-exercises.html#cb46-1" aria-hidden="true" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="fu">sim_design</span>(</span>
+<span id="cb46-2"><a href="faux-exercises.html#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">between =</span> <span class="fu">list</span>(<span class="at">placement =</span> <span class="fu">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;right&quot;</span>, <span class="st">&quot;none&quot;</span>)),</span>
+<span id="cb46-3"><a href="faux-exercises.html#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mu =</span> <span class="fu">c</span>(<span class="fl">654.53</span>, <span class="fl">865.41</span>, <span class="fl">914.34</span>),</span>
+<span id="cb46-4"><a href="faux-exercises.html#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sd =</span> <span class="fu">c</span>(<span class="fl">390.45</span>, <span class="fl">517.26</span>, <span class="fl">560.94</span>),</span>
+<span id="cb46-5"><a href="faux-exercises.html#cb46-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">45</span>, <span class="dv">54</span>, <span class="dv">50</span>),</span>
+<span id="cb46-6"><a href="faux-exercises.html#cb46-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">&quot;calories&quot;</span></span>
+<span id="cb46-7"><a href="faux-exercises.html#cb46-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>Set up the analysis. Here, we really just care about three p=values, so we’ll just return those. We can use a function from the {emmeans} package to check the two pairwise comparisons.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="faux-exercises.html#cb47-1" aria-hidden="true" tabindex="-1"></a>afex<span class="sc">::</span><span class="fu">set_sum_contrasts</span>() <span class="co"># avoids annoying afex message on each run</span></span></code></pre></div>
+<pre><code>## setting contr.sum globally: options(contrasts=c(&#39;contr.sum&#39;, &#39;contr.poly&#39;))</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="faux-exercises.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">afex_options</span>(<span class="at">include_aov =</span> <span class="cn">TRUE</span>) <span class="co"># we need aov for lsmeans</span></span>
+<span id="cb49-2"><a href="faux-exercises.html#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="faux-exercises.html#cb49-3" aria-hidden="true" tabindex="-1"></a>s1_analyse <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
+<span id="cb49-4"><a href="faux-exercises.html#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># main effect of placement</span></span>
+<span id="cb49-5"><a href="faux-exercises.html#cb49-5" aria-hidden="true" tabindex="-1"></a>  a <span class="ot">&lt;-</span> afex<span class="sc">::</span><span class="fu">aov_ez</span>(</span>
+<span id="cb49-6"><a href="faux-exercises.html#cb49-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">id =</span> <span class="st">&quot;id&quot;</span>,</span>
+<span id="cb49-7"><a href="faux-exercises.html#cb49-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">dv =</span> <span class="st">&quot;calories&quot;</span>,</span>
+<span id="cb49-8"><a href="faux-exercises.html#cb49-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">between =</span> <span class="st">&quot;placement&quot;</span>,</span>
+<span id="cb49-9"><a href="faux-exercises.html#cb49-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> data</span>
+<span id="cb49-10"><a href="faux-exercises.html#cb49-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb49-11"><a href="faux-exercises.html#cb49-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb49-12"><a href="faux-exercises.html#cb49-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># contrasts</span></span>
+<span id="cb49-13"><a href="faux-exercises.html#cb49-13" aria-hidden="true" tabindex="-1"></a>  e <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(a, <span class="st">&quot;placement&quot;</span>)</span>
+<span id="cb49-14"><a href="faux-exercises.html#cb49-14" aria-hidden="true" tabindex="-1"></a>  c1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">lr =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="dv">0</span>),</span>
+<span id="cb49-15"><a href="faux-exercises.html#cb49-15" aria-hidden="true" tabindex="-1"></a>             <span class="at">ln =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.5</span>, <span class="dv">0</span>, <span class="fl">0.5</span>))</span>
+<span id="cb49-16"><a href="faux-exercises.html#cb49-16" aria-hidden="true" tabindex="-1"></a>  b <span class="ot">&lt;-</span> <span class="fu">contrast</span>(e, c1, <span class="at">adjust =</span> <span class="st">&quot;holm&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb49-17"><a href="faux-exercises.html#cb49-17" aria-hidden="true" tabindex="-1"></a>    broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
+<span id="cb49-18"><a href="faux-exercises.html#cb49-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb49-19"><a href="faux-exercises.html#cb49-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
+<span id="cb49-20"><a href="faux-exercises.html#cb49-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">p_all =</span> a<span class="sc">$</span>anova_table<span class="sc">$</span><span class="st">`</span><span class="at">Pr(&gt;F)</span><span class="st">`</span>[[<span class="dv">1</span>]],</span>
+<span id="cb49-21"><a href="faux-exercises.html#cb49-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">p_1 =</span> b<span class="sc">$</span>adj.p.value[[<span class="dv">1</span>]],</span>
+<span id="cb49-22"><a href="faux-exercises.html#cb49-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">p_2 =</span> b<span class="sc">$</span>adj.p.value[[<span class="dv">2</span>]]</span>
+<span id="cb49-23"><a href="faux-exercises.html#cb49-23" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb49-24"><a href="faux-exercises.html#cb49-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb49-25"><a href="faux-exercises.html#cb49-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-26"><a href="faux-exercises.html#cb49-26" aria-hidden="true" tabindex="-1"></a><span class="fu">s1_analyse</span>(s1)</span></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="right">p_all</th>
+<th align="right">p_1</th>
+<th align="right">p_2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0.0418833</td>
+<td align="right">0.1474684</td>
+<td align="right">0.0239774</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Let’s just replicate this 100 times so the simulation doesn’t take too long to run at first. We can always increase it later after we’ve run some sense checks.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="faux-exercises.html#cb50-1" aria-hidden="true" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="fu">sim_design</span>(</span>
+<span id="cb50-2"><a href="faux-exercises.html#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">between =</span> <span class="fu">list</span>(<span class="at">placement =</span> <span class="fu">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;right&quot;</span>, <span class="st">&quot;none&quot;</span>)),</span>
+<span id="cb50-3"><a href="faux-exercises.html#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mu =</span> <span class="fu">c</span>(<span class="fl">654.53</span>, <span class="fl">865.41</span>, <span class="fl">914.34</span>),</span>
+<span id="cb50-4"><a href="faux-exercises.html#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sd =</span> <span class="fu">c</span>(<span class="fl">390.45</span>, <span class="fl">517.26</span>, <span class="fl">560.94</span>),</span>
+<span id="cb50-5"><a href="faux-exercises.html#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">45</span>, <span class="dv">54</span>, <span class="dv">50</span>),</span>
+<span id="cb50-6"><a href="faux-exercises.html#cb50-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">&quot;calories&quot;</span>,</span>
+<span id="cb50-7"><a href="faux-exercises.html#cb50-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">rep =</span> <span class="dv">100</span></span>
+<span id="cb50-8"><a href="faux-exercises.html#cb50-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>Run the analysis on each data set.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="faux-exercises.html#cb51-1" aria-hidden="true" tabindex="-1"></a>s1_sim <span class="ot">&lt;-</span> s1 <span class="sc">%&gt;%</span></span>
+<span id="cb51-2"><a href="faux-exercises.html#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">analysis =</span> <span class="fu">map</span>(data, s1_analyse)) <span class="sc">%&gt;%</span></span>
+<span id="cb51-3"><a href="faux-exercises.html#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>data) <span class="sc">%&gt;%</span></span>
+<span id="cb51-4"><a href="faux-exercises.html#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(analysis)</span>
+<span id="cb51-5"><a href="faux-exercises.html#cb51-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-6"><a href="faux-exercises.html#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(s1_sim)</span></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="right">rep</th>
+<th align="right">p_all</th>
+<th align="right">p_1</th>
+<th align="right">p_2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">0.0034317</td>
+<td align="right">0.0086018</td>
+<td align="right">0.0027807</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">0.2595953</td>
+<td align="right">0.2328832</td>
+<td align="right">0.2328832</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">0.0004448</td>
+<td align="right">0.0001797</td>
+<td align="right">0.0506550</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">0.0676437</td>
+<td align="right">0.0931488</td>
+<td align="right">0.0487033</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">0.0169225</td>
+<td align="right">0.0235099</td>
+<td align="right">0.0235099</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">0.0650196</td>
+<td align="right">0.1093398</td>
+<td align="right">0.0435229</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Calculating power is a little trickier here, as all three p-values need to be significant here to support the hypothesis.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="faux-exercises.html#cb52-1" aria-hidden="true" tabindex="-1"></a>s1_power <span class="ot">&lt;-</span> s1_sim <span class="sc">%&gt;%</span></span>
+<span id="cb52-2"><a href="faux-exercises.html#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sig =</span> (p_all <span class="sc">&lt;</span> .<span class="dv">05</span>) <span class="sc">&amp;</span> </span>
+<span id="cb52-3"><a href="faux-exercises.html#cb52-3" aria-hidden="true" tabindex="-1"></a>               (p_1 <span class="sc">&lt;</span> .<span class="dv">05</span>) <span class="sc">&amp;</span> </span>
+<span id="cb52-4"><a href="faux-exercises.html#cb52-4" aria-hidden="true" tabindex="-1"></a>               (p_2 <span class="sc">&lt;</span> .<span class="dv">05</span>)  ) <span class="sc">%&gt;%</span></span>
+<span id="cb52-5"><a href="faux-exercises.html#cb52-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">power =</span> <span class="fu">mean</span>(sig)) <span class="sc">%&gt;%</span></span>
+<span id="cb52-6"><a href="faux-exercises.html#cb52-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(power)</span></code></pre></div>
+<p>Compare this value (0.42) with the value in the paper (0.4582).</p>
+</div>
+<div id="study-3" class="section level3" number="2.2.4">
+<h3><span class="header-section-number">A.2.4</span> Study 3</h3>
+<p>Now you can use the pattern from Study 1 to analyse the data for Study 3. We’ll start with the repeated data set.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="faux-exercises.html#cb53-1" aria-hidden="true" tabindex="-1"></a>s3 <span class="ot">&lt;-</span> <span class="fu">sim_design</span>(</span>
+<span id="cb53-2"><a href="faux-exercises.html#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">between =</span> <span class="fu">list</span>(<span class="at">placement =</span> <span class="fu">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;right&quot;</span>, <span class="st">&quot;none&quot;</span>)),</span>
+<span id="cb53-3"><a href="faux-exercises.html#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mu =</span> <span class="fu">c</span>(<span class="fl">1428.24</span>, <span class="fl">1308.66</span>, <span class="fl">1436.79</span>),</span>
+<span id="cb53-4"><a href="faux-exercises.html#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sd =</span> <span class="fu">c</span>(<span class="fl">377.02</span>, <span class="fl">420.14</span>, <span class="fl">378.47</span>),</span>
+<span id="cb53-5"><a href="faux-exercises.html#cb53-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">85</span>, <span class="dv">86</span>, <span class="dv">81</span>),</span>
+<span id="cb53-6"><a href="faux-exercises.html#cb53-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">&quot;calories&quot;</span>,</span>
+<span id="cb53-7"><a href="faux-exercises.html#cb53-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">rep =</span> <span class="dv">100</span></span>
+<span id="cb53-8"><a href="faux-exercises.html#cb53-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>These data were collected in the Hebrew language, which reads right to left, so the paired contrasts will be different.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="faux-exercises.html#cb54-1" aria-hidden="true" tabindex="-1"></a>s3_analyse <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
+<span id="cb54-2"><a href="faux-exercises.html#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># main effect of placement</span></span>
+<span id="cb54-3"><a href="faux-exercises.html#cb54-3" aria-hidden="true" tabindex="-1"></a>  a <span class="ot">&lt;-</span> afex<span class="sc">::</span><span class="fu">aov_ez</span>(</span>
+<span id="cb54-4"><a href="faux-exercises.html#cb54-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">id =</span> <span class="st">&quot;id&quot;</span>,</span>
+<span id="cb54-5"><a href="faux-exercises.html#cb54-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">dv =</span> <span class="st">&quot;calories&quot;</span>,</span>
+<span id="cb54-6"><a href="faux-exercises.html#cb54-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">between =</span> <span class="st">&quot;placement&quot;</span>,</span>
+<span id="cb54-7"><a href="faux-exercises.html#cb54-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> data</span>
+<span id="cb54-8"><a href="faux-exercises.html#cb54-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb54-9"><a href="faux-exercises.html#cb54-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb54-10"><a href="faux-exercises.html#cb54-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># contrasts (reversed)</span></span>
+<span id="cb54-11"><a href="faux-exercises.html#cb54-11" aria-hidden="true" tabindex="-1"></a>  e <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(a, <span class="st">&quot;placement&quot;</span>)</span>
+<span id="cb54-12"><a href="faux-exercises.html#cb54-12" aria-hidden="true" tabindex="-1"></a>  c1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">rl =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="sc">-</span><span class="fl">0.5</span>, <span class="dv">0</span>),</span>
+<span id="cb54-13"><a href="faux-exercises.html#cb54-13" aria-hidden="true" tabindex="-1"></a>             <span class="at">ln =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="sc">-</span><span class="fl">0.5</span>, <span class="fl">0.5</span>))</span>
+<span id="cb54-14"><a href="faux-exercises.html#cb54-14" aria-hidden="true" tabindex="-1"></a>  b <span class="ot">&lt;-</span> <span class="fu">contrast</span>(e, c1, <span class="at">adjust =</span> <span class="st">&quot;holm&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb54-15"><a href="faux-exercises.html#cb54-15" aria-hidden="true" tabindex="-1"></a>    broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
+<span id="cb54-16"><a href="faux-exercises.html#cb54-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb54-17"><a href="faux-exercises.html#cb54-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
+<span id="cb54-18"><a href="faux-exercises.html#cb54-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">p_all =</span> a<span class="sc">$</span>anova_table<span class="sc">$</span><span class="st">`</span><span class="at">Pr(&gt;F)</span><span class="st">`</span>[[<span class="dv">1</span>]],</span>
+<span id="cb54-19"><a href="faux-exercises.html#cb54-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">p_1 =</span> b<span class="sc">$</span>adj.p.value[[<span class="dv">1</span>]],</span>
+<span id="cb54-20"><a href="faux-exercises.html#cb54-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">p_2 =</span> b<span class="sc">$</span>adj.p.value[[<span class="dv">2</span>]]</span>
+<span id="cb54-21"><a href="faux-exercises.html#cb54-21" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb54-22"><a href="faux-exercises.html#cb54-22" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Run the analysis on each data set.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="faux-exercises.html#cb55-1" aria-hidden="true" tabindex="-1"></a>s3_sim <span class="ot">&lt;-</span> s3 <span class="sc">%&gt;%</span></span>
+<span id="cb55-2"><a href="faux-exercises.html#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">analysis =</span> <span class="fu">map</span>(data, s3_analyse)) <span class="sc">%&gt;%</span></span>
+<span id="cb55-3"><a href="faux-exercises.html#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>data) <span class="sc">%&gt;%</span></span>
+<span id="cb55-4"><a href="faux-exercises.html#cb55-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(analysis)</span>
+<span id="cb55-5"><a href="faux-exercises.html#cb55-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-6"><a href="faux-exercises.html#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(s3_sim)</span></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="right">rep</th>
+<th align="right">p_all</th>
+<th align="right">p_1</th>
+<th align="right">p_2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">0.0262845</td>
+<td align="right">0.0166075</td>
+<td align="right">0.0750064</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">0.0549322</td>
+<td align="right">0.0659798</td>
+<td align="right">0.0659798</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">0.0291340</td>
+<td align="right">0.1503155</td>
+<td align="right">0.0159775</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">0.0145949</td>
+<td align="right">0.0073671</td>
+<td align="right">0.1366318</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">0.0122501</td>
+<td align="right">0.0499609</td>
+<td align="right">0.0073854</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">0.0350654</td>
+<td align="right">0.0277263</td>
+<td align="right">0.0561030</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="faux-exercises.html#cb56-1" aria-hidden="true" tabindex="-1"></a>s3_power <span class="ot">&lt;-</span> s3_sim <span class="sc">%&gt;%</span></span>
+<span id="cb56-2"><a href="faux-exercises.html#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sig =</span> (p_all <span class="sc">&lt;</span> .<span class="dv">05</span>) <span class="sc">&amp;</span> </span>
+<span id="cb56-3"><a href="faux-exercises.html#cb56-3" aria-hidden="true" tabindex="-1"></a>               (p_1 <span class="sc">&lt;</span> .<span class="dv">05</span>) <span class="sc">&amp;</span> </span>
+<span id="cb56-4"><a href="faux-exercises.html#cb56-4" aria-hidden="true" tabindex="-1"></a>               (p_2 <span class="sc">&lt;</span> .<span class="dv">05</span>)  ) <span class="sc">%&gt;%</span></span>
+<span id="cb56-5"><a href="faux-exercises.html#cb56-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">power =</span> <span class="fu">mean</span>(sig)) <span class="sc">%&gt;%</span></span>
+<span id="cb56-6"><a href="faux-exercises.html#cb56-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(power)</span></code></pre></div>
+<p>Compare this value (0.31) with the value in the paper (0.3626).</p>
+</div>
+<div id="study-s1" class="section level3" number="2.2.5">
+<h3><span class="header-section-number">A.2.5</span> Study S1</h3>
+<p>Now you can use the pattern from Study 2 to analyse the data for Study S1. You can even reuse the analysis function <code>s2_analyse</code>!</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="faux-exercises.html#cb57-1" aria-hidden="true" tabindex="-1"></a>ss1 <span class="ot">&lt;-</span> <span class="fu">sim_design</span>(</span>
+<span id="cb57-2"><a href="faux-exercises.html#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">between =</span> <span class="fu">list</span>(<span class="at">placement =</span> <span class="fu">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;right&quot;</span>)),</span>
+<span id="cb57-3"><a href="faux-exercises.html#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mu =</span> <span class="fu">c</span>(<span class="at">left =</span> <span class="fl">185.94</span>, <span class="at">right =</span> <span class="fl">215.73</span>),</span>
+<span id="cb57-4"><a href="faux-exercises.html#cb57-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sd =</span> <span class="fu">c</span>(<span class="at">left =</span> <span class="fl">93.92</span>, <span class="at">right =</span> <span class="fl">95.33</span>),</span>
+<span id="cb57-5"><a href="faux-exercises.html#cb57-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="fu">c</span>(<span class="at">left =</span> <span class="dv">99</span>, <span class="at">right =</span> <span class="dv">77</span>),</span>
+<span id="cb57-6"><a href="faux-exercises.html#cb57-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">&quot;calories&quot;</span>,</span>
+<span id="cb57-7"><a href="faux-exercises.html#cb57-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">rep =</span> <span class="dv">1000</span></span>
+<span id="cb57-8"><a href="faux-exercises.html#cb57-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="faux-exercises.html#cb58-1" aria-hidden="true" tabindex="-1"></a>ss1_sim <span class="ot">&lt;-</span> ss1 <span class="sc">%&gt;%</span></span>
+<span id="cb58-2"><a href="faux-exercises.html#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">analysis =</span> <span class="fu">map</span>(data, s2_analyse)) <span class="sc">%&gt;%</span></span>
+<span id="cb58-3"><a href="faux-exercises.html#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>data) <span class="sc">%&gt;%</span></span>
+<span id="cb58-4"><a href="faux-exercises.html#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(analysis)</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="faux-exercises.html#cb59-1" aria-hidden="true" tabindex="-1"></a>ss1_power <span class="ot">&lt;-</span> ss1_sim <span class="sc">%&gt;%</span></span>
+<span id="cb59-2"><a href="faux-exercises.html#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sig =</span> p.value <span class="sc">&lt;</span> .<span class="dv">05</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb59-3"><a href="faux-exercises.html#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">power =</span> <span class="fu">mean</span>(sig)) <span class="sc">%&gt;%</span></span>
+<span id="cb59-4"><a href="faux-exercises.html#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(power)</span></code></pre></div>
+</div>
+<div id="study-s2" class="section level3" number="2.2.6">
+<h3><span class="header-section-number">A.2.6</span> Study S2</h3>
+<p>Now you can use the pattern from Study 1 to analyse the data for Study S2. You can even reuse the analysis function <code>s1_analyse</code>!</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="faux-exercises.html#cb60-1" aria-hidden="true" tabindex="-1"></a>ss2 <span class="ot">&lt;-</span> <span class="fu">sim_design</span>(</span>
+<span id="cb60-2"><a href="faux-exercises.html#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">between =</span> <span class="fu">list</span>(<span class="at">placement =</span> <span class="fu">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;right&quot;</span>, <span class="st">&quot;none&quot;</span>)),</span>
+<span id="cb60-3"><a href="faux-exercises.html#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mu =</span> <span class="fu">c</span>(<span class="fl">1182.15</span>, <span class="fl">1302.23</span>, <span class="fl">1373.74</span>),</span>
+<span id="cb60-4"><a href="faux-exercises.html#cb60-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sd =</span> <span class="fu">c</span>(<span class="fl">477.60</span>, <span class="fl">434.41</span>, <span class="fl">475.77</span>),</span>
+<span id="cb60-5"><a href="faux-exercises.html#cb60-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">139</span>, <span class="dv">141</span>, <span class="dv">151</span>),</span>
+<span id="cb60-6"><a href="faux-exercises.html#cb60-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">&quot;calories&quot;</span>,</span>
+<span id="cb60-7"><a href="faux-exercises.html#cb60-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">rep =</span> <span class="dv">100</span></span>
+<span id="cb60-8"><a href="faux-exercises.html#cb60-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="faux-exercises.html#cb61-1" aria-hidden="true" tabindex="-1"></a>ss2_sim <span class="ot">&lt;-</span> ss2 <span class="sc">%&gt;%</span></span>
+<span id="cb61-2"><a href="faux-exercises.html#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">analysis =</span> <span class="fu">map</span>(data, s1_analyse)) <span class="sc">%&gt;%</span></span>
+<span id="cb61-3"><a href="faux-exercises.html#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>data) <span class="sc">%&gt;%</span></span>
+<span id="cb61-4"><a href="faux-exercises.html#cb61-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(analysis)</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="faux-exercises.html#cb62-1" aria-hidden="true" tabindex="-1"></a>ss2_power <span class="ot">&lt;-</span> ss2_sim <span class="sc">%&gt;%</span></span>
+<span id="cb62-2"><a href="faux-exercises.html#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sig =</span> (p_all <span class="sc">&lt;</span> .<span class="dv">05</span>) <span class="sc">&amp;</span> </span>
+<span id="cb62-3"><a href="faux-exercises.html#cb62-3" aria-hidden="true" tabindex="-1"></a>               (p_1 <span class="sc">&lt;</span> .<span class="dv">05</span>) <span class="sc">&amp;</span> </span>
+<span id="cb62-4"><a href="faux-exercises.html#cb62-4" aria-hidden="true" tabindex="-1"></a>               (p_2 <span class="sc">&lt;</span> .<span class="dv">05</span>)  ) <span class="sc">%&gt;%</span></span>
+<span id="cb62-5"><a href="faux-exercises.html#cb62-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">power =</span> <span class="fu">mean</span>(sig)) <span class="sc">%&gt;%</span></span>
+<span id="cb62-6"><a href="faux-exercises.html#cb62-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(power)</span></code></pre></div>
+</div>
+<div id="study-s3" class="section level3" number="2.2.7">
+<h3><span class="header-section-number">A.2.7</span> Study S3</h3>
+<p>Now you can use the pattern from Study 1 to analyse the data for Study S3.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="faux-exercises.html#cb63-1" aria-hidden="true" tabindex="-1"></a>ss3 <span class="ot">&lt;-</span> <span class="fu">sim_design</span>(</span>
+<span id="cb63-2"><a href="faux-exercises.html#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">between =</span> <span class="fu">list</span>(<span class="at">placement =</span> <span class="fu">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;right&quot;</span>, <span class="st">&quot;none&quot;</span>)),</span>
+<span id="cb63-3"><a href="faux-exercises.html#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mu =</span> <span class="fu">c</span>(<span class="fl">1302.03</span>, <span class="fl">1373.15</span>, <span class="fl">1404.35</span>),</span>
+<span id="cb63-4"><a href="faux-exercises.html#cb63-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sd =</span> <span class="fu">c</span>(<span class="fl">480.02</span>, <span class="fl">442.49</span>, <span class="fl">422.03</span>),</span>
+<span id="cb63-5"><a href="faux-exercises.html#cb63-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">336</span>, <span class="dv">337</span>, <span class="dv">333</span>),</span>
+<span id="cb63-6"><a href="faux-exercises.html#cb63-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">&quot;calories&quot;</span>,</span>
+<span id="cb63-7"><a href="faux-exercises.html#cb63-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">rep =</span> <span class="dv">100</span></span>
+<span id="cb63-8"><a href="faux-exercises.html#cb63-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="faux-exercises.html#cb64-1" aria-hidden="true" tabindex="-1"></a>ss3_sim <span class="ot">&lt;-</span> ss3 <span class="sc">%&gt;%</span></span>
+<span id="cb64-2"><a href="faux-exercises.html#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">analysis =</span> <span class="fu">map</span>(data, s1_analyse)) <span class="sc">%&gt;%</span></span>
+<span id="cb64-3"><a href="faux-exercises.html#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>data) <span class="sc">%&gt;%</span></span>
+<span id="cb64-4"><a href="faux-exercises.html#cb64-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(analysis)</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="faux-exercises.html#cb65-1" aria-hidden="true" tabindex="-1"></a>ss3_power <span class="ot">&lt;-</span> ss3_sim <span class="sc">%&gt;%</span></span>
+<span id="cb65-2"><a href="faux-exercises.html#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sig =</span> (p_all <span class="sc">&lt;</span> .<span class="dv">05</span>) <span class="sc">&amp;</span> </span>
+<span id="cb65-3"><a href="faux-exercises.html#cb65-3" aria-hidden="true" tabindex="-1"></a>               (p_1 <span class="sc">&lt;</span> .<span class="dv">05</span>) <span class="sc">&amp;</span> </span>
+<span id="cb65-4"><a href="faux-exercises.html#cb65-4" aria-hidden="true" tabindex="-1"></a>               (p_2 <span class="sc">&lt;</span> .<span class="dv">05</span>)  ) <span class="sc">%&gt;%</span></span>
+<span id="cb65-5"><a href="faux-exercises.html#cb65-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">power =</span> <span class="fu">mean</span>(sig)) <span class="sc">%&gt;%</span></span>
+<span id="cb65-6"><a href="faux-exercises.html#cb65-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(power)</span></code></pre></div>
+</div>
+<div id="conclusion" class="section level3" number="2.2.8">
+<h3><span class="header-section-number">A.2.8</span> Conclusion</h3>
+<p>Now that you’ve calculated power for each of the 6 studies, just multiply the 6 power values together to get the probability that all 6 studies will be significant.</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="faux-exercises.html#cb66-1" aria-hidden="true" tabindex="-1"></a>power_table <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb66-2"><a href="faux-exercises.html#cb66-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>study, <span class="sc">~</span>power_ft, <span class="sc">~</span> power_my,</span>
+<span id="cb66-3"><a href="faux-exercises.html#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;1&quot;</span>, <span class="fl">0.4582</span>, s1_power,</span>
+<span id="cb66-4"><a href="faux-exercises.html#cb66-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;2&quot;</span>, <span class="fl">0.5426</span>, s2_power,</span>
+<span id="cb66-5"><a href="faux-exercises.html#cb66-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;3&quot;</span>, <span class="fl">0.3626</span>, s3_power,</span>
+<span id="cb66-6"><a href="faux-exercises.html#cb66-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;S1&quot;</span>, <span class="fl">0.5358</span>, ss1_power,</span>
+<span id="cb66-7"><a href="faux-exercises.html#cb66-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;S2&quot;</span>, <span class="fl">0.5667</span>, ss2_power,</span>
+<span id="cb66-8"><a href="faux-exercises.html#cb66-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;S3&quot;</span>, <span class="fl">0.4953</span>, ss3_power</span>
+<span id="cb66-9"><a href="faux-exercises.html#cb66-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb66-10"><a href="faux-exercises.html#cb66-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-11"><a href="faux-exercises.html#cb66-11" aria-hidden="true" tabindex="-1"></a>power_table</span></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">study</th>
+<th align="right">power_ft</th>
+<th align="right">power_my</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="right">0.4582</td>
+<td align="right">0.420</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="right">0.5426</td>
+<td align="right">0.539</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="right">0.3626</td>
+<td align="right">0.310</td>
+</tr>
+<tr class="even">
+<td align="left">S1</td>
+<td align="right">0.5358</td>
+<td align="right">0.547</td>
+</tr>
+<tr class="odd">
+<td align="left">S2</td>
+<td align="right">0.5667</td>
+<td align="right">0.510</td>
+</tr>
+<tr class="even">
+<td align="left">S3</td>
+<td align="right">0.4953</td>
+<td align="right">0.420</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The <code>reduce()</code> function from {purrr} applies a function sequentially over a vector, so can give up the product of all the values in the power columns.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="faux-exercises.html#cb67-1" aria-hidden="true" tabindex="-1"></a>prob_ft <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">reduce</span>(power_table<span class="sc">$</span>power_ft, <span class="st">`</span><span class="at">*</span><span class="st">`</span>)</span>
+<span id="cb67-2"><a href="faux-exercises.html#cb67-2" aria-hidden="true" tabindex="-1"></a>prob_my <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">reduce</span>(power_table<span class="sc">$</span>power_my, <span class="st">`</span><span class="at">*</span><span class="st">`</span>)</span></code></pre></div>
+<p>The Francis &amp; Thunell paper showed a 0.01 probability of getting 6 of 6 studies significant. Our re-simulation showed a 0.01 probability.</p>
+
+</div>
+</div>
+</div>
+<div class="psyteachr_footer">
+  
+</div>
+<script>
+
+/* update total correct if #total_correct exists */
+update_total_correct = function() {
+  if (t = document.getElementById("total_correct")) {
+    t.innerHTML =
+      document.getElementsByClassName("correct").length + " of " +
+      document.getElementsByClassName("solveme").length + " correct";
+  }
+}
+
+/* solution button toggling function */
+b_func = function() {
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "");
+  }
+  
+  if (my_answer !== "" & real_answers.includes(my_answer)) {
+    cl.add("correct");
+  } else {
+    cl.remove("correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol>0){
+    var tol = JSON.parse(this.dataset.tol);  
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("correct");
+    } else {
+      cl.remove("correct");
+    }  
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("correct");
+    }  
+  }
+  
+  update_total_correct();
+}
+
+window.onload = function() {
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+  
+  /* set up solveme inputs */
+  var solveme = document.getElementsByClassName("solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off"); 
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+    
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+    
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+  }
+  
+  update_total_correct();
+}
+
+</script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro-to-faux.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"],
+"google": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": {},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>

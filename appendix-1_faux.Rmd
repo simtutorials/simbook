@@ -1,0 +1,569 @@
+# Faux Exercises
+
+```{r setup, message=FALSE}
+library(tidyverse)
+library(faux)
+library(afex)
+library(emmeans)
+faux_options(plot = FALSE)
+
+set.seed(8675309)
+```
+
+## Short Exercises
+
+### Multivariate normal
+
+Sample 40 values of three variables named `J`, `K` and `L` from a population with means of 10, 20 and 30, and SDs of 5. `J` and `K` are correlated 0.5, `J` and `L` are correlated 0.25, and `K` and `L` are not correlated.
+
+```{r}
+ex1 <- rnorm_multi(n = 40, mu = c(J = 10, K = 20, L = 30),
+                   sd = 5, r = c(0.5, 0.25, 0))
+
+get_params(ex1)
+```
+
+### From existing data
+
+Using the data from the built-in dataset `attitude`, simulate a new set of 20 observations drawn from a population with the same means, SDs and correlations for each column as the original data.
+
+```{r}
+dat_r <- cor(attitude)
+dat_mu <- summarise_all(attitude, mean) %>% t()
+dat_sd <- summarise_all(attitude, sd) %>% t()
+
+ex2 <- rnorm_multi(20, mu = dat_mu, sd = dat_sd,r = dat_r)
+
+get_params(ex2)
+```
+
+
+### 2b
+
+Create a dataset with a between-subject factor of "pet" having two levels, "cat", and "dog". The DV is "happiness" score. There are 20 cat-owners with a mean happiness score of 10 (SD = 3) and there are 30 dog-owners with a mean happiness score of 11 (SD = 3).
+
+```{r}
+dat2b <- sim_design(
+  between = list(pet = c("cat", "dog")),
+  dv = "happiness",
+  n = list(cat = 20, dog = 30),
+  mu = list(cat = 10, dog = 11),
+  sd = 3
+)
+
+get_params(dat2b, between = "pet")
+```
+
+### 3w
+
+Create a dataset of 20 observations with 1 within-subject variable ("condition") having 3 levels ("A", "B", "C") with means of 10, 20 and 30 and SD of 5. The correlations between each level have r = 0.4. The dataset should look like this:
+
+| id | condition | score |
+|:---|:----------|------:|
+|S01 | A         |  9.17 |
+|... | ...       |  ...  |
+|S20 | A         | 11.57 |
+|S01 | B         | 18.44 |
+|... | ...       |  ...  |
+|S20 | B         | 20.04 |
+|S01 | C         | 35.11 |
+|... | ...       |  ...  |
+|S20 | C         | 29.16 |
+
+```{r}
+
+dat3w <- sim_design(
+  within = list(condition = c("A", "B", "C")),
+  n = 20,
+  mu = c(10, 20, 30),
+  sd = 5,
+  r = .4,
+  dv = "score",
+  long = TRUE
+)
+
+get_params(dat3w)
+
+```
+
+### 2w*2w
+
+Create a dataset with 50 observations of 2 within-subject variables ("A" and "B") each having 2 levels. The mean for all cells is 10 and the SD is 2. The dataset should have 20 subjects. The correlations look like this:
+
+|       | A1_B1 | A1_B2 | A2_B1 | A2_B2 |
+|:------|------:|------:|------:|------:|
+| A1_B1 | 1.0   | 0.5   | 0.5   | 0.2   |
+| A1_B2 | 0.5   | 1.0   | 0.2   | 0.5   |
+| A2_B1 | 0.5   | 0.2   | 1.0   | 0.5   |
+| A2_B2 | 0.2   | 0.5   | 0.5   | 1.0   |
+
+
+```{r}
+dat2w2w <- sim_design(
+  within = c(2,2),
+  n = 50, 
+  mu = 10,
+  sd = 2,
+  r = c(.5, .5, .2, 
+            .2, .5, 
+                .5)
+)
+
+get_params(dat2w2w)
+```
+
+### 2w*3b
+
+Create a dataset with a between-subject factor of "pet" having 3 levels ("cat", "dog", and "ferret") and a within-subject factor of "time" having 2 levels ("pre" and "post"). The N in each group should be 10. Means are:
+
+* cats: pre = 10, post = 12
+* dogs: pre = 14, post = 16
+* ferrets: pre = 18, post = 20
+
+SDs are all 5 and within-cell correlations are all 0.25.
+
+```{r}
+
+mu <- data.frame(
+  cat = c(10, 12),
+  dog = c(14, 16),
+  ferret = c(18, 20)
+)
+
+dat2w3b <- sim_design(
+  within = list(time = c("pre", "post")),
+  between = list(pet = c("cat", "dog", "ferret")),
+  n = 10,
+  mu = mu,
+  sd = 5,
+  r = 0.25
+)
+
+get_params(dat2w3b)
+  
+```
+
+### Replications
+
+Create 5 datasets with a 2b*2b design, 30 participants in each cell. Each cell's mean should be 0, except A1_B1, which should be 0.5. The SD should be 1. Make the resulting data in long format.
+
+```{r}
+dat2b2b <- sim_design(
+  between = c(2,2),
+  n = 30,
+  mu = c(0.5, 0, 0, 0),
+  rep = 5,
+  long = TRUE
+)
+```
+
+### Power 
+
+Simulate 100 datasets like the one above and use `lm()` or `afex::aov_ez()` to look at the interaction between A and B. What is the power of this design?
+
+```{r}
+# simulate 100 datasets
+dat2b2b_100 <- sim_design(
+  between = c(2, 2),
+  n = 30,
+  mu = c(0.5, 0, 0, 0),
+  rep = 100,
+  long = TRUE
+)
+
+# linear model version
+analyse_lm <- function(data) {
+  lm(y ~ A*B, data = data) %>% 
+    broom::tidy() %>%
+    mutate(term = factor(term, levels = term))
+}
+
+ana_lm <- dat2b2b_100 %>%
+  mutate(analysis = map(data, analyse_lm)) %>%
+  select(-data) %>%
+  unnest(analysis)
+
+ana_lm %>%
+  group_by(term) %>%
+  summarise(power = mean(p.value < .05),
+            .groups = "drop")
+```
+
+```{r}
+# anova version
+afex::set_sum_contrasts() # avoids annoying afex message
+afex_options(include_aov = FALSE) # runs faster
+afex_options(es_aov = "pes") # changes effect size measure to partial eta squared
+
+analyse_aov <- function(data) {
+  a <- afex::aov_ez(id = "id",
+              dv = "y",
+              between = c("A", "B"),
+              data = data)
+  
+  as_tibble(a$anova_table, rownames = "term") %>%
+    mutate(term = factor(term, levels = term)) %>% 
+    rename(p.value = `Pr(>F)`) 
+}
+
+ana_aov <- dat2b2b_100 %>%
+  mutate(analysis = map(data, analyse_aov)) %>%
+  select(-data) %>%
+  unnest(analysis)
+
+ana_aov %>%
+  group_by(term) %>%
+  summarise(power = mean(p.value < .05),
+            .groups = "drop")
+```
+
+
+
+## Calorie Placement Re-Simulation
+
+### Data Source
+
+We will be replicating some of the re-analyses in Francis & Thunell's (2020) Meta-Psychology paper: Excess success in "Don't count calorie labeling out: Calorie counts on the left side of menu items lead to lower calorie food choices".
+
+They ran power analyses for all 6 studies in Dallas, Liu, and Ubel's (2019) study showing that people order food with significantly fewer calories when the calorie count was placed to the left of the item than to the right (or having no calorie label). They then used these power estimates to calculate the probability of all 6 out of 6 studies being significant, given the observed power of each study.
+
+* [Re-analysis](https://doi.org/10.15626/MP.2019.2266)
+* [Re-analysis code](https://osf.io/xrdhj/)
+* [Original paper](https://doi.org/10.1002/jcpy.1053)
+
+Table 1 of the re-analysis paper provides all of the parameters we will need. 
+
+### Study 2
+
+We'll start with S2 because the analysis is very straightforward. It's a between-subjects design, where 143 subjects saw calorie placement on the left and their mean calories ordered were 1249.83 (SD = 449.07), while 132 subjects saw calorie placement on the right and their mean calories ordered were 1362.31 (SD = 447.35).
+
+Let's first simulate a single data table with these parameters and set up our analysis.
+
+```{r}
+s2 <- sim_design(
+  between = list(placement = c("left", "right")),
+  mu = c(left = 1249.83, right = 1362.31),
+  sd = c(left = 449.07, right = 447.35),
+  n = c(left = 143, right = 132),
+  dv = "calories"
+)
+```
+
+Wrap the analysis in a function using the `tidy()` function from {broom} to get the results in a tidy table. Check that it works by running it on the single data set above.
+
+```{r}
+s2_analyse <- function(data) {
+  t.test(calories ~ placement, data = data) %>%
+    broom::tidy()
+}
+
+s2_analyse(s2)
+```
+
+
+Now, simulate the data 1000 times.
+
+```{r}
+s2 <- sim_design(
+  between = list(placement = c("left", "right")),
+  mu = c(left = 1249.83, right = 1362.31),
+  sd = c(left = 449.07, right = 447.35),
+  n = c(left = 143, right = 132),
+  dv = "calories",
+  rep = 1000
+)
+```
+
+Run the analysis on each data set.
+
+```{r}
+s2_sim <- s2 %>%
+  mutate(analysis = map(data, s2_analyse)) %>%
+  select(-data) %>%
+  unnest(analysis)
+
+head(s2_sim)
+```
+
+Summarise the `p.value` column to get power.
+
+```{r}
+s2_power <- s2_sim %>%
+  mutate(sig = p.value < .05) %>%
+  summarise(power = mean(sig)) %>%
+  pull(power)
+```
+
+Compare this value (`r s2_power`) with the value in the paper (0.5426).
+
+### Study 1
+
+Study 1 is a little more complicated because the design includes a "no label" condition, so the decision rule for supporting the hypothesis is more complicated.
+
+The data simulation is relatively straightforward, though.
+
+```{r}
+s1 <- sim_design(
+  between = list(placement = c("left", "right", "none")),
+  mu = c(654.53, 865.41, 914.34),
+  sd = c(390.45, 517.26, 560.94),
+  n = c(45, 54, 50),
+  dv = "calories"
+)
+```
+
+Set up the analysis. Here, we really just care about three p=values, so we'll just return those. We can use a function from the {emmeans} package to check the two pairwise comparisons.
+
+```{r}
+afex::set_sum_contrasts() # avoids annoying afex message on each run
+afex_options(include_aov = TRUE) # we need aov for lsmeans
+
+s1_analyse <- function(data) {
+  # main effect of placement
+  a <- afex::aov_ez(
+    id = "id",
+    dv = "calories",
+    between = "placement",
+    data = data
+  )
+  
+  # contrasts
+  e <- emmeans(a, "placement")
+  c1 <- list(lr = c(-0.5, 0.5, 0),
+             ln = c(-0.5, 0, 0.5))
+  b <- contrast(e, c1, adjust = "holm") %>%
+    broom::tidy()
+  
+  data.frame(
+    p_all = a$anova_table$`Pr(>F)`[[1]],
+    p_1 = b$adj.p.value[[1]],
+    p_2 = b$adj.p.value[[2]]
+  )
+}
+
+s1_analyse(s1)
+```
+
+Let's just replicate this 100 times so the simulation doesn't take too long to run at first. We can always increase it later after we've run some sense checks.
+
+```{r}
+s1 <- sim_design(
+  between = list(placement = c("left", "right", "none")),
+  mu = c(654.53, 865.41, 914.34),
+  sd = c(390.45, 517.26, 560.94),
+  n = c(45, 54, 50),
+  dv = "calories",
+  rep = 100
+)
+```
+
+Run the analysis on each data set.
+
+```{r}
+s1_sim <- s1 %>%
+  mutate(analysis = map(data, s1_analyse)) %>%
+  select(-data) %>%
+  unnest(analysis)
+
+head(s1_sim)
+```
+
+Calculating power is a little trickier here, as all three p-values need to be significant here to support the hypothesis.
+
+```{r}
+s1_power <- s1_sim %>%
+  mutate(sig = (p_all < .05) & 
+               (p_1 < .05) & 
+               (p_2 < .05)  ) %>%
+  summarise(power = mean(sig)) %>%
+  pull(power)
+```
+
+Compare this value (`r s1_power`) with the value in the paper (0.4582).
+
+### Study 3
+
+Now you can use the pattern from Study 1 to analyse the data for Study 3. We'll start with the repeated data set.
+
+```{r}
+s3 <- sim_design(
+  between = list(placement = c("left", "right", "none")),
+  mu = c(1428.24, 1308.66, 1436.79),
+  sd = c(377.02, 420.14, 378.47),
+  n = c(85, 86, 81),
+  dv = "calories",
+  rep = 100
+)
+```
+
+These data were collected in the Hebrew language, which reads right to left, so the paired contrasts will be different.
+
+```{r}
+s3_analyse <- function(data) {
+  # main effect of placement
+  a <- afex::aov_ez(
+    id = "id",
+    dv = "calories",
+    between = "placement",
+    data = data
+  )
+  
+  # contrasts (reversed)
+  e <- emmeans(a, "placement")
+  c1 <- list(rl = c(0.5, -0.5, 0),
+             ln = c(0, -0.5, 0.5))
+  b <- contrast(e, c1, adjust = "holm") %>%
+    broom::tidy()
+  
+  data.frame(
+    p_all = a$anova_table$`Pr(>F)`[[1]],
+    p_1 = b$adj.p.value[[1]],
+    p_2 = b$adj.p.value[[2]]
+  )
+}
+```
+
+Run the analysis on each data set.
+
+```{r}
+s3_sim <- s3 %>%
+  mutate(analysis = map(data, s3_analyse)) %>%
+  select(-data) %>%
+  unnest(analysis)
+
+head(s3_sim)
+```
+
+```{r}
+s3_power <- s3_sim %>%
+  mutate(sig = (p_all < .05) & 
+               (p_1 < .05) & 
+               (p_2 < .05)  ) %>%
+  summarise(power = mean(sig)) %>%
+  pull(power)
+```
+
+Compare this value (`r s3_power`) with the value in the paper (0.3626).
+
+
+### Study S1
+
+Now you can use the pattern from Study 2 to analyse the data for Study S1. You can even reuse the analysis function `s2_analyse`!
+
+```{r}
+ss1 <- sim_design(
+  between = list(placement = c("left", "right")),
+  mu = c(left = 185.94, right = 215.73),
+  sd = c(left = 93.92, right = 95.33),
+  n = c(left = 99, right = 77),
+  dv = "calories",
+  rep = 1000
+)
+```
+
+```{r}
+ss1_sim <- ss1 %>%
+  mutate(analysis = map(data, s2_analyse)) %>%
+  select(-data) %>%
+  unnest(analysis)
+```
+
+
+```{r}
+ss1_power <- ss1_sim %>%
+  mutate(sig = p.value < .05) %>%
+  summarise(power = mean(sig)) %>%
+  pull(power)
+```
+
+
+### Study S2
+
+Now you can use the pattern from Study 1 to analyse the data for Study S2. You can even reuse the analysis function `s1_analyse`!
+
+```{r}
+ss2 <- sim_design(
+  between = list(placement = c("left", "right", "none")),
+  mu = c(1182.15, 1302.23, 1373.74),
+  sd = c(477.60, 434.41, 475.77),
+  n = c(139, 141, 151),
+  dv = "calories",
+  rep = 100
+)
+```
+
+```{r}
+ss2_sim <- ss2 %>%
+  mutate(analysis = map(data, s1_analyse)) %>%
+  select(-data) %>%
+  unnest(analysis)
+```
+
+```{r}
+ss2_power <- ss2_sim %>%
+  mutate(sig = (p_all < .05) & 
+               (p_1 < .05) & 
+               (p_2 < .05)  ) %>%
+  summarise(power = mean(sig)) %>%
+  pull(power)
+```
+
+### Study S3
+
+Now you can use the pattern from Study 1 to analyse the data for Study S3.
+
+```{r}
+ss3 <- sim_design(
+  between = list(placement = c("left", "right", "none")),
+  mu = c(1302.03, 1373.15, 1404.35),
+  sd = c(480.02, 442.49, 422.03),
+  n = c(336, 337, 333),
+  dv = "calories",
+  rep = 100
+)
+```
+
+```{r}
+ss3_sim <- ss3 %>%
+  mutate(analysis = map(data, s1_analyse)) %>%
+  select(-data) %>%
+  unnest(analysis)
+```
+
+```{r}
+ss3_power <- ss3_sim %>%
+  mutate(sig = (p_all < .05) & 
+               (p_1 < .05) & 
+               (p_2 < .05)  ) %>%
+  summarise(power = mean(sig)) %>%
+  pull(power)
+```
+
+### Conclusion
+
+Now that you've calculated power for each of the 6 studies, just multiply the 6 power values together to get the probability that all 6 studies will be significant.
+
+
+```{r}
+power_table <- tribble(
+  ~study, ~power_ft, ~ power_my,
+  "1", 0.4582, s1_power,
+  "2", 0.5426, s2_power,
+  "3", 0.3626, s3_power,
+  "S1", 0.5358, ss1_power,
+  "S2", 0.5667, ss2_power,
+  "S3", 0.4953, ss3_power
+)
+
+power_table
+```
+
+The `reduce()` function from {purrr} applies a function sequentially over a vector, so can give up the product of all the values in the power columns.
+
+```{r}
+prob_ft <- purrr::reduce(power_table$power_ft, `*`)
+prob_my <- purrr::reduce(power_table$power_my, `*`)
+```
+
+The Francis & Thunell paper showed a `r round(prob_ft, 2)` probability of getting 6 of 6 studies significant. Our re-simulation showed a `r round(prob_my, 2)` probability.
+
